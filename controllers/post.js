@@ -26,6 +26,7 @@ const createNewPost = async (req, res) => {
                 date: req.body.date,
                 thumbnail: result['secure_url'],
                 news: req.body.news,
+                posterId: req.body.posterId,
                 comment: req.body.comment,
                 active: true,
                 trending: false

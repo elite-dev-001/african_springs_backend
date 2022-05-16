@@ -25,6 +25,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    posterId: {
+        type: String,
+        required: true
+    },
     comment: {
         type: Array,
         required: false

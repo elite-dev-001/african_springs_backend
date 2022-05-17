@@ -30,6 +30,7 @@ const createAdmin = async (req, res) => {
             gender: req.body.gender,
             country: req.body.country,
             city: req.body.city,
+            profile: req.body.profile,
             comment: req.body.comment,
             post: req.body.post,
             suspend: false,

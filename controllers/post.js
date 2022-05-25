@@ -29,7 +29,8 @@ const createNewPost = async (req, res) => {
                 posterId: req.body.posterId,
                 comment: req.body.comment,
                 active: true,
-                trending: false
+                trending: false,
+                featured: false
             })
 
             newPost.save().then(() => {

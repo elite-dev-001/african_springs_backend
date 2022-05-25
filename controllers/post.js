@@ -129,4 +129,20 @@ const trendingStatus = async (req, res) => {
     }
 }
 
-module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus};
+//UPDATE FEARTURED
+const featuredStatus = async (req, res) => {
+    const featured = await postSchema.findByIdAndUpdate(
+        {_id: req.params.id}, {
+            $set: {
+                featured: req.body.featured
+            }
+        }, {new: true}
+    )
+    if(featured) {
+        res.status(200).json({message: "Successfully updated"})
+    } else {
+        res.status(500).json({message: "Could not update"})
+    }
+}
+
+module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus};

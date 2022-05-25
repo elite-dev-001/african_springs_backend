@@ -6,11 +6,13 @@ const postRoute = require('./routes/post')
 const adminRoute = require('./routes/admin')
 const superAdminRoute = require('./routes/super_admin')
 const resetPasswordRoute = require('./routes/password_reset')
+const cors = require('cors')
 
 
 let port = process.env.PORT || 5000;
 
 const app = express();
+app.use(cors());
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Alllow-Origin", "*");

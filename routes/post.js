@@ -11,6 +11,7 @@ router.patch('/update/news/:id', postController.updateNews)
 router.patch('/update/comments/:id', postController.updateComments)
 router.patch('/update/status/:id', postController.postStatus)
 router.patch('/update/trending/:id', postController.trendingStatus)
+router.patch('/update/featured/:id', postController.featuredStatus)
 
 
 module.exports = router;

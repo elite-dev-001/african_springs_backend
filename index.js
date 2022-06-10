@@ -7,6 +7,7 @@ const adminRoute = require('./routes/admin')
 const superAdminRoute = require('./routes/super_admin')
 const resetPasswordRoute = require('./routes/password_reset')
 const cors = require('cors')
+// const fileUpload = require('express-fileupload')
 
 
 let port = process.env.PORT || 5000;
@@ -24,6 +25,10 @@ app.use(function (req, res, next) {
 
     next();
 })
+
+// app.use(fileUpload({
+//     useTempFiles: false
+// }))
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))

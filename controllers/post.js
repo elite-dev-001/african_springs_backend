@@ -8,23 +8,23 @@ const JWT_SECRET = 'jdfuqgwefouh@#$%jknskdjhu%$^jasbdjqd376@!%sdlfj';
 //CREATING A NEW POST
 const createNewPost = async (req, res) => {
 
-    cloudinary.config({
-        cloud_name: "wilsonchinedu",
-        api_key: "147132482297155",
-        api_secret: "TuC__zwwBXQ764YO3Y_vXr73p00"
-    })
+    // cloudinary.config({
+    //     cloud_name: "wilsonchinedu",
+    //     api_key: "147132482297155",
+    //     api_secret: "TuC__zwwBXQ764YO3Y_vXr73p00"
+    // })
 
-    cloudinary.uploader.upload(req.file["path"], (error, result) => {
+    // cloudinary.uploader.upload(req.file["path"], (error, result) => {
         
-        if(result) {
-            console.log(result['secure_url'])
+        // if(result) {
+            // console.log(result['secure_url'])
 
             const newPost = new postSchema({
                 category: req.body.category,
                 title: req.body.title,
                 author: req.body.author,
                 date: req.body.date,
-                thumbnail: result['secure_url'],
+                thumbnail: req.body.thumbnail,
                 news: req.body.news,
                 posterId: req.body.posterId,
                 comment: req.body.comment,
@@ -40,10 +40,10 @@ const createNewPost = async (req, res) => {
                 res.status(500).json({message: err})
             })
 
-        } else {
-            res.status(500).json({message: error})
-        }
-    })
+        // } else {
+        //     res.status(500).json({message: error})
+        // }
+    // })
 
     
 }

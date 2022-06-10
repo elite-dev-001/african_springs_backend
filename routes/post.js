@@ -1,11 +1,11 @@
 const express = require('express')
 const postController = require('../controllers/post');
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+// const upload = multer({ dest: 'uploads/' })
 
 const router = express.Router();
 
-router.post('/create/news', upload.single('thumbnail') ,postController.createNewPost);
+router.post('/create/news' ,postController.createNewPost);
 router.get('/get/all/news', postController.getAllPost);
 router.get('/get/single/post/:id', postController.getSinglePost);
 router.patch('/update/news/:id', postController.updateNews)

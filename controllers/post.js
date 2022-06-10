@@ -96,10 +96,13 @@ const updateNews = async (req, res) => {
 
 // UPDATE COMMENT SECTION
 const updateComments = async (req, res) => {
+    const findPost = await postSchema.findById({_id: req.params.id})
+    const comment = Array.from(findPost['coment'])
+    comment.push(req.body.comment)
     const postComments = await postSchema.findByIdAndUpdate(
         {_id: req.params.id}, {
             $set: {
-                comment: req.body.comment
+                comment: comment
             }
         }, {new: true}
     )

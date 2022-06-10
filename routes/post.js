@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/create/news', upload.single('thumbnail') ,postController.createNewPost);
 router.get('/get/all/news', postController.getAllPost);
+router.get('/get/single/post/:id', postController.getSinglePost);
 router.patch('/update/news/:id', postController.updateNews)
 router.patch('/update/comments/:id', postController.updateComments)
 router.patch('/update/status/:id', postController.postStatus)

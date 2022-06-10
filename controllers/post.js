@@ -64,6 +64,18 @@ const getAllPost = (req, res) => {
     
 }
 
+//GET SINGLE POST
+const getSinglePost = (req, res) => {
+    postSchema.find({_id: req.params.id}, (err, results) => {
+        if(err) {
+            console.log(err);
+            res.status(500).json({message: err})
+        } else {
+            res.status(200).json(result)
+        }
+    })
+}
+
 // UPDATE NEWS DETAILS
 const updateNews = async (req, res) => {
     const newsUpdate = await postSchema.findByIdAndUpdate(
@@ -146,4 +158,4 @@ const featuredStatus = async (req, res) => {
     }
 }
 
-module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus};
+module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus, getSinglePost};

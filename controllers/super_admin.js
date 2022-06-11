@@ -99,7 +99,7 @@ const updateSuperPosts = async (req, res) => {
 
 // UPDATE SUPER ADMIN PROFILE PIC
 const updateProfilePics = async (req, res) => {
-    const adminProfile = await adminSchema.findByIdAndUpdate(
+    const adminProfile = await superAdminSchema.findByIdAndUpdate(
         {_id: req.params.id}, {
             $set: {
                 profile: req.body.profile

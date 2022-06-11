@@ -97,4 +97,20 @@ const updateSuperPosts = async (req, res) => {
     }
 }
 
-module.exports = {createSuperAdmin, getOneSuperAdmin, updateSuperComments, updateSuperPosts}
+// UPDATE SUPER ADMIN PROFILE PIC
+const updateProfilePics = async (req, res) => {
+    const adminProfile = await adminSchema.findByIdAndUpdate(
+        {_id: req.params.id}, {
+            $set: {
+                profile: req.body.profile
+            }
+        }, {new: true}
+    )
+    if(adminComments) {
+        res.status(200).json({message: "Successfully updated"})
+    } else {
+        res.status(500).json({message: "Could not update"})
+    }
+}
+
+module.exports = {createSuperAdmin, getOneSuperAdmin, updateSuperComments, updateSuperPosts, updateProfilePics}

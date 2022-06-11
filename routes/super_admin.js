@@ -9,5 +9,6 @@ router.post('/register', superAdminController.createSuperAdmin);
 router.get('/get/one/:id', ensureToken, superAdminController.getOneSuperAdmin);
 router.patch('/update/comment/:id', superAdminController.updateSuperComments);
 router.patch('/update/post/:id', superAdminController.updateSuperPosts);
+router.patch('/update/profile/:id', superAdminController.updateProfilePics)
 
 module.exports = router;

@@ -11,5 +11,6 @@ router.get('/get/one/:id', ensureToken, adminController.getOneAdmin)
 router.patch('/update/comment/:id', adminController.updateComments)
 router.patch('/update/suspension/:id', adminController.suspendAccount)
 router.patch('/update/post/:id', adminController.updatePosts)
+router.patch('/update/profile/:id', adminController.updateProfilePics)
 
 module.exports = router; 

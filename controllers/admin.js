@@ -100,6 +100,23 @@ const updateComments = async (req, res) => {
     }
 }
 
+
+// UPDATE ADMIN PROFILE PIC
+const updateProfilePics = async (req, res) => {
+    const adminProfile = await adminSchema.findByIdAndUpdate(
+        {_id: req.params.id}, {
+            $set: {
+                profile: req.body.profile
+            }
+        }, {new: true}
+    )
+    if(adminComments) {
+        res.status(200).json({message: "Successfully updated"})
+    } else {
+        res.status(500).json({message: "Could not update"})
+    }
+}
+
 // UPDATE ADMIN POST SECTION
 const updatePosts = async (req, res) => {
     const adminPosts = await adminSchema.findByIdAndUpdate(
@@ -133,4 +150,4 @@ const suspendAccount = async (req, res) => {
 }
 
 
-module.exports = { createAdmin, getOneAdmin, getAllAdmins, updatePosts ,updateComments, suspendAccount}
+module.exports = { createAdmin, getOneAdmin, getAllAdmins, updatePosts ,updateComments, suspendAccount, updateProfilePics}

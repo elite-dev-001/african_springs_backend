@@ -28,6 +28,8 @@ const createNewPost = async (req, res) => {
                 news: req.body.news,
                 posterId: req.body.posterId,
                 comment: req.body.comment,
+                posterImage: req.body.posterImage,
+                link: req.body.link,
                 active: true,
                 trending: false,
                 featured: false

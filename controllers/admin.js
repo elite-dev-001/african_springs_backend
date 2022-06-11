@@ -110,7 +110,7 @@ const updateProfilePics = async (req, res) => {
             }
         }, {new: true}
     )
-    if(adminComments) {
+    if(adminProfile) {
         res.status(200).json({message: "Successfully updated"})
     } else {
         res.status(500).json({message: "Could not update"})

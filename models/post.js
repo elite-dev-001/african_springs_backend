@@ -33,6 +33,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    videoLink: {
+        type: String,
+        required: false
+    },
     posterImage: {
         type: String,
         required: true

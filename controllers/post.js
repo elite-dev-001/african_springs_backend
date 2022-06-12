@@ -30,6 +30,7 @@ const createNewPost = async (req, res) => {
                 comment: req.body.comment,
                 posterImage: req.body.posterImage,
                 link: req.body.link,
+                videoLink: req.body.videoLink,
                 active: true,
                 trending: false,
                 featured: false
@@ -163,5 +164,31 @@ const featuredStatus = async (req, res) => {
         res.status(500).json({message: "Could not update"})
     }
 }
+//UPDATE THUMBNAIL
+const thumbnailUpdate = async (req, res) => {
+    const thumbnail = await postSchema.findByIdAndUpdate(
+        {_id: req.params.id}, {
+            $set: {
+                thumbnail: req.body.thumbnail
+            }
+        }, {new: true}
+    )
+    if(thumbnail) {
+        res.status(200).json({message: "Successfully updated"})
+    } else {
+        res.status(500).json({message: "Could not update"})
+    }
+}
+//DELETE POST
+const deleteSinglePost = (req, res) => {
+    postSchema.findByIdAndDelete({_id: req.params.id}, (err, results) => {
+        if(err) {
+            console.log(err);
+            res.status(500).json({message: err})
+        } else {
+            res.status(200).json(results)
+        }
+    })
+}
 
-module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus, getSinglePost};
+module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus, getSinglePost, thumbnailUpdate, deleteSinglePost};

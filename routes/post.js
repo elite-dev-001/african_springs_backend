@@ -13,6 +13,8 @@ router.patch('/update/comments/:id', postController.updateComments)
 router.patch('/update/status/:id', postController.postStatus)
 router.patch('/update/trending/:id', postController.trendingStatus)
 router.patch('/update/featured/:id', postController.featuredStatus)
+router.patch('/update/thumbnail/:id', postController.thumbnailUpdate)
+router.delete('/delete/single/post/:id', postController.deleteSinglePost)
 
 
 module.exports = router;

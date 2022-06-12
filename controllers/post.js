@@ -87,7 +87,8 @@ const updateNews = async (req, res) => {
                 category: req.body.category,
                 title: req.body.title,
                 news: req.body.news,
-                author: req.body.author
+                author: req.body.author,
+                link: req.body.link,
             }
         }, {new: true}
     )

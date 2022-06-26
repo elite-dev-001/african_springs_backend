@@ -31,6 +31,7 @@ const createUser = async (req, res) => {
             gender: req.body.gender,
             city: req.body.city,
             country: req.body.country,
+            profile: req.body.profile,
             comment: req.body.comment,
             suspend: false,
             password: password,
@@ -115,5 +116,21 @@ const suspendAccount = async (req, res) => {
     }
 }
 
+//UPDATE USER Profile
+const userProfile = async (req, res) => {
+    const suspension = await userSchema.findByIdAndUpdate(
+        {_id: req.params.id}, {
+            $set: {
+                profile: req.body.profile
+            }
+        }, {new: true}
+    )
+    if(suspension) {
+        res.status(200).json({message: "Successfully Updated"})
+    } else {
+        res.status(500).json({message: "Could not update"})
+    }
+}
 
-module.exports = { createUser, getOneUser, getAllUsers, updateUserComments, suspendAccount}
+
+module.exports = { createUser, getOneUser, getAllUsers, updateUserComments, suspendAccount, userProfile}

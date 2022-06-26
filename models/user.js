@@ -25,6 +25,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    profile: {
+        type: String,
+        required: true
+    },
     comment: {
         type: Array,
         required: false

@@ -53,16 +53,54 @@ const createNewPost = async (req, res) => {
 
 //GET ALL POST
 const getAllPost = (req, res) => {
+
+    const {category, limit, trend, featured} = req.query;
+    // console.log(limit)
+
+    if(trend){
+        postSchema.find({trending: true}, (err, results) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({message: err})
+            } else {
+                res.status(200).json({results})
+            }
+        }).limit(limit)
+    } else if(featured){
+        postSchema.find({featured: true}, (err, results) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({message: err})
+            } else {
+                res.status(200).json({results})
+            }
+        }).limit(limit)
+    } else {
+        postSchema.find(category ? {category: {'$regex' : category, "$options":"i"}} : {}, (err, results) => {
+            if(err) {
+                console.log(err);
+                res.status(500).json({message: err})
+            } else {
+                res.status(200).json({results})
+            }
+        }).limit(limit)
+    }
     
-      
-            postSchema.find({}, (err, results) => {
-                if(err) {
-                    console.log(err);
-                    res.status(500).json({message: err})
-                } else {
-                    res.status(200).json({results})
-                }
-            })
+    // trend ? postSchema.find({trending: true}, (err, results) => {
+    //     if(err) {
+    //         console.log(err);
+    //         res.status(500).json({message: err})
+    //     } else {
+    //         res.status(200).json({results})
+    //     }
+    // }).limit(limit) : postSchema.find(category ? {category: category} : {}, (err, results) => {
+    //     if(err) {
+    //         console.log(err);
+    //         res.status(500).json({message: err})
+    //     } else {
+    //         res.status(200).json({results})
+    //     }
+    // }).limit(limit)
         
     
 }

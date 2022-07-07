@@ -65,7 +65,7 @@ const getAllPost = (req, res) => {
             } else {
                 res.status(200).json({results})
             }
-        }).limit(limit)
+        }).sort({date: -1}).limit(limit)
     } else if(featured){
         postSchema.find({featured: true}, (err, results) => {
             if(err) {
@@ -74,7 +74,7 @@ const getAllPost = (req, res) => {
             } else {
                 res.status(200).json({results})
             }
-        }).limit(limit)
+        }).sort({date: -1}).limit(limit)
     } else {
         postSchema.find(category ? {category: {'$regex' : category, "$options":"i"}} : {}, (err, results) => {
             if(err) {
@@ -83,7 +83,7 @@ const getAllPost = (req, res) => {
             } else {
                 res.status(200).json({results})
             }
-        }).limit(limit)
+        }).sort({date: -1}).limit(limit)
     }
     
     // trend ? postSchema.find({trending: true}, (err, results) => {

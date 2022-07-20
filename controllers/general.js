@@ -32,7 +32,7 @@ const createGeneralPost = async (req, res) => {
 //GET ALL POST
 const getAllPost = (req, res) => {
 
-    const {limit} = req.query;
+    // const {limit} = req.query;
 
     generalSchema.find({}, (err, results) => {
         if(err, results) {
@@ -41,7 +41,7 @@ const getAllPost = (req, res) => {
         } else {
             res.status(200).json({results})
         }
-    }).sort({date: -1}).limit(limit)
+    }).sort({date: -1})
 
         
     

@@ -4,6 +4,7 @@ const createUserRoute = require('./routes/user')
 const loginRoute = require('./routes/login')
 const postRoute = require('./routes/post')
 const adminRoute = require('./routes/admin')
+const generalRoute = require('./routes/general')
 const superAdminRoute = require('./routes/super_admin')
 const resetPasswordRoute = require('./routes/password_reset')
 const cors = require('cors')
@@ -38,6 +39,9 @@ app.use('/api/user/', createUserRoute);
 
 //API ROUTES FOR NEWS POSTING
 app.use('/api/post/', postRoute)
+
+//API ROUTES FOR NEWS General
+app.use('/api/general/', generalRoute)
 
 //API ROUTES FOR ADMINS
 app.use('/api/admins/', adminRoute)

@@ -35,7 +35,7 @@ const getAllPost = (req, res) => {
     // const {limit} = req.query;
 
     generalSchema.find({}, (err, results) => {
-        if(err, results) {
+        if(err) {
             console.log(err);
             res.status(500).json({message: err})
         } else {

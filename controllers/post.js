@@ -7,6 +7,8 @@ const JWT_SECRET = 'jdfuqgwefouh@#$%jknskdjhu%$^jasbdjqd376@!%sdlfj';
 
 //CREATING A NEW POST
 const createNewPost = async (req, res) => {
+    const date = new Date()
+    date.toDateString()
 
     // cloudinary.config({
     //     cloud_name: "wilsonchinedu",
@@ -23,7 +25,7 @@ const createNewPost = async (req, res) => {
                 category: req.body.category,
                 title: req.body.title,
                 author: req.body.author,
-                date: new Date(),
+                date: date,
                 thumbnail: req.body.thumbnail,
                 thumbnail2: req.body.thumbnail2,
                 news: req.body.news,

@@ -23,7 +23,7 @@ const createNewPost = async (req, res) => {
                 category: req.body.category,
                 title: req.body.title,
                 author: req.body.author,
-                date: req.body.date,
+                date: new Date(),
                 thumbnail: req.body.thumbnail,
                 thumbnail2: req.body.thumbnail2,
                 news: req.body.news,

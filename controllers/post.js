@@ -25,6 +25,7 @@ const createNewPost = async (req, res) => {
                 author: req.body.author,
                 date: req.body.date,
                 thumbnail: req.body.thumbnail,
+                thumbnail2: req.body.thumbnail2,
                 news: req.body.news,
                 posterId: req.body.posterId,
                 comment: req.body.comment,

@@ -21,6 +21,10 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    thumbnail2: {
+        type: String,
+        required: false
+    },
     news: {
         type: String,
         required: true

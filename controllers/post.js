@@ -139,6 +139,7 @@ const updateNews = async (req, res) => {
                 news: req.body.news,
                 author: req.body.author,
                 link: req.body.link,
+                thumbnail: req.body.thumbnail
             }
         }, {new: true}
     )

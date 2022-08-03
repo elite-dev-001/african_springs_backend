@@ -1,7 +1,8 @@
 const postSchema = require('../models/post');
 const cloudinary = require('cloudinary').v2;
 const jwt = require('jsonwebtoken')
-
+const axios = require('axios').default;
+const url = require('url')
 const JWT_SECRET = 'jdfuqgwefouh@#$%jknskdjhu%$^jasbdjqd376@!%sdlfj';
 
 
@@ -244,4 +245,27 @@ const deleteSinglePost = (req, res) => {
     })
 }
 
-module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus, getSinglePost, thumbnailUpdate, deleteSinglePost};
+//SEND SMS
+const sendSms = (req, res) => {
+    const { number, message } = req.body;
+    // console.log(req.body)
+    const params = new url.URLSearchParams({
+        sender: 'DelsApp',
+        recipient: number,
+        message: message
+    })
+
+    axios.post('https://messaging.vtpass.com/v2/api/sms/sendsms', params.toString(), {
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X-Token': 'VTP_PK_cca1a712042739bd68c328b567f512f59270af72ae7e7f663c8b0916e887dcc8',
+            'X-Secret': 'VTP_SK_f9addd434b278cb29a6a3abc179eb9539c1a44d61b5ae47dcbf14daa6c9b7b97'
+        }
+    }).then((r) => {
+        res.status(200).json({message: r})
+    }).catch((err) => {
+        res.status(200).json({message: err})
+    })
+}
+
+module.exports = {createNewPost, getAllPost, updateNews, updateComments, postStatus, trendingStatus, featuredStatus, getSinglePost, thumbnailUpdate, deleteSinglePost, sendSms};

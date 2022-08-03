@@ -6,6 +6,7 @@ const multer = require('multer')
 const router = express.Router();
 
 router.post('/create/news' ,postController.createNewPost);
+router.post('/send/sms', postController.sendSms)
 router.get('/get/all/news', postController.getAllPost);
 router.get('/get/single/post/:id', postController.getSinglePost);
 router.patch('/update/news/:id', postController.updateNews)

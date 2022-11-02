@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/create/news' ,postController.createNewPost);
 router.post('/send/sms', postController.sendSms)
+router.post('/send/trust/sms', postController.sendTrustSms)
 router.get('/get/all/news', postController.getAllPost);
 router.get('/get/single/post/:id', postController.getSinglePost);
 router.patch('/update/news/:id', postController.updateNews)

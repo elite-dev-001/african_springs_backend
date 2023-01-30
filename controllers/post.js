@@ -153,14 +153,19 @@ const updateNews = async (req, res) => {
 
 // UPDATE COMMENT SECTION
 const updateComments = async (req, res) => {
+    const {reply, message, index} = req.body
     const findPost = await postSchema.findById({_id: req.params.id})
+
+    const replyOrComment = reply ? Array.from(findPost['comment'][index]['replys']) : Array.from(findPost['comment'])
+    replyOrComment.push(message)
+
     const comment = Array.from(findPost['comment'])
-    console.log(req.body)
-    comment.push(req.body)
+    // console.log(req.body)
+    // comment.push(req.body)
     const postComments = await postSchema.findByIdAndUpdate(
         {_id: req.params.id}, {
             $set: {
-                comment: comment
+                comment: reply ? comment[index].replys = replyOrComment : replyOrComment
             }
         }, {new: true}
     )
@@ -169,6 +174,16 @@ const updateComments = async (req, res) => {
     } else {
         res.status(500).json({message: "Could not update"})
     }
+}
+
+//UPDATE REPLY SECTION
+const updateReply = async (req, res) => {
+    const {index, reply} = req.body;
+    const findPost = await postSchema.findById({_id: req.params.id})
+    const replys = Array.from(findPost['comment'][index]['replys'])
+    replys.push(reply)
+
+
 }
 
 // UPDATE POST STATUS

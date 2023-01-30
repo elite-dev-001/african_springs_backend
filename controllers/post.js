@@ -177,14 +177,14 @@ const updateComments = async (req, res) => {
 }
 
 //UPDATE REPLY SECTION
-const updateReply = async (req, res) => {
-    const {index, reply} = req.body;
-    const findPost = await postSchema.findById({_id: req.params.id})
-    const replys = Array.from(findPost['comment'][index]['replys'])
-    replys.push(reply)
+// const updateReply = async (req, res) => {
+//     const {index, reply} = req.body;
+//     const findPost = await postSchema.findById({_id: req.params.id})
+//     const replys = Array.from(findPost['comment'][index]['replys'])
+//     replys.push(reply)
 
 
-}
+// }
 
 // UPDATE POST STATUS
 const postStatus = async (req, res) => {

@@ -159,6 +159,7 @@ const updateComments = async (req, res) => {
     // console.log(reply)
     // console.log(message)
     // console.log(index)
+    // console.log(findPost)
 
     let replyOrComment = reply ? Array.from(findPost['comment'][index]['replys']) : Array.from(findPost['comment'])
     
@@ -170,6 +171,8 @@ const updateComments = async (req, res) => {
         comment[index].replys = replyOrComment;
         replyOrComment = comment;
     }
+
+    // console.log(replyOrComment)
 
     // // console.log(req.body)
     // // comment.push(req.body)

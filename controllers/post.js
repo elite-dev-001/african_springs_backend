@@ -167,7 +167,7 @@ const updateComments = async (req, res) => {
 
     if(reply){
         const comment = Array.from(findPost['comment'])
-        comment[index]['message'].replys = replyOrComment;
+        comment[index].replys = replyOrComment;
         replyOrComment = comment;
     }
 

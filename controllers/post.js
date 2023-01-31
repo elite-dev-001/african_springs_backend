@@ -160,7 +160,7 @@ const updateComments = async (req, res) => {
     // console.log(message)
     // console.log(index)
 
-    let replyOrComment = reply ? Array.from(findPost['comment'][index]['message']['replys']) : Array.from(findPost['comment'])
+    let replyOrComment = reply ? Array.from(findPost['comment'][index]['replys']) : Array.from(findPost['comment'])
     
     replyOrComment.push(message)
     // console.log(replyOrComment)

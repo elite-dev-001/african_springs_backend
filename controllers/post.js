@@ -156,16 +156,27 @@ const updateComments = async (req, res) => {
     const {reply, message, index} = req.body
     const findPost = await postSchema.findById({_id: req.params.id})
 
-    const replyOrComment = reply ? Array.from(findPost['comment'][index]['replys']) : Array.from(findPost['comment'])
-    replyOrComment.push(message)
+    // console.log(reply)
+    // console.log(message)
+    // console.log(index)
 
-    const comment = Array.from(findPost['comment'])
-    // console.log(req.body)
-    // comment.push(req.body)
+    let replyOrComment = reply ? Array.from(findPost['comment'][index]['message']['replys']) : Array.from(findPost['comment'])
+    
+    replyOrComment.push(message)
+    // console.log(replyOrComment)
+
+    if(reply){
+        const comment = Array.from(findPost['comment'])
+        comment[index]['message'].replys = replyOrComment;
+        replyOrComment = comment;
+    }
+
+    // // console.log(req.body)
+    // // comment.push(req.body)
     const postComments = await postSchema.findByIdAndUpdate(
         {_id: req.params.id}, {
             $set: {
-                comment: reply ? comment[index].replys = replyOrComment : replyOrComment
+                comment: replyOrComment
             }
         }, {new: true}
     )

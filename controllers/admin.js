@@ -87,6 +87,8 @@ const getAllAdmins = (req, res) => {
   //   });
 };
 
+//Testing the update
+
 // UPDATE ADMIN COMMENT SECTION
 const updateComments = async (req, res) => {
   const adminComments = await adminSchema.findByIdAndUpdate(
